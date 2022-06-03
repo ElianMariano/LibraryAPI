@@ -26,7 +26,7 @@ public class ClientController : ControllerBase {
     }
 
     [HttpPut]
-    public async Task<ActionResult<Client>> update([FromRoute] int id,[FromBody] Client client){
+    public async Task<ActionResult<Client>> update([FromRoute] int id, [FromBody] Client client){
         return Ok(client);
     }
 
