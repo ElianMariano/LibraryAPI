@@ -6,7 +6,9 @@ public class Rent {
 
     public DateTime end { get; set; }
 
-    public Book rentBook { get; set; }
+    public int BookId { get; set; }
+    public Book Book { get; set; }
 
-    public Client client { get; set; }
+    public int ClientId { get; set; }
+    public Client Client { get; set; }
 }

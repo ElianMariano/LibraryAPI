@@ -7,5 +7,5 @@ public class Category{
 
     public String description { get; set; }
 
-    public List<Book>? books { get; set; }
+    public List<Book> books { get; set; }
 }

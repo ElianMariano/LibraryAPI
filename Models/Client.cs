@@ -13,4 +13,6 @@ public class Client{
     public String city { get; set; }
 
     public String state { get; set; }
+
+    public List<Rent> Rents { get; set; }
 }

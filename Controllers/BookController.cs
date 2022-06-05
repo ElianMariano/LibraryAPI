@@ -8,9 +8,15 @@ namespace LibraryAPI.Controllers;
 public class BookController : ControllerBase{
     public List<Book> books = new List<Book>();
 
+    private readonly ApplicationDbContext _context;
+
+    public BookController(ApplicationDbContext context){
+        _context = context;
+    } 
+
     [HttpGet]
     public async Task<ActionResult<Book>> get(){
-        return Ok(books);
+        return Ok(_context.Books.ToList());
     }
 
     [HttpGet("{id}")]
@@ -21,10 +27,7 @@ public class BookController : ControllerBase{
         author.name = "George R.R. Martin";
         author.profission = "Writer";
         author.id = 0;
-        author.authorDescription = "George R.R. Martin is the author of the famous novel series Game of Thrones.";
-        author.street = "Street";
-        author.city = "Londom";
-        author.state = "United Kingdom";
+        author.description = "George R.R. Martin is the author of the famous novel series Game of Thrones.";
 
         Book book = new Book();
         book.title = "A Game Of Thrones";

@@ -6,11 +6,18 @@ namespace LibraryAPI.Controllers;
 [ApiController]
 [Route("[controller]")]
 public class AuthorController : ControllerBase{
-    public List<Author> authors = new List<Author>(); 
+    public List<Author> authors = new List<Author>();
+
+
+    private readonly ApplicationDbContext _context;
+
+    public AuthorController(ApplicationDbContext context){
+        _context = context;
+    } 
 
     [HttpGet]
     public async Task<ActionResult<List<Author>>> get(){
-        return Ok(authors);
+        return Ok(_context.Authors.ToList());
     }
 
     [HttpGet("{id:int}")]
@@ -20,10 +27,7 @@ public class AuthorController : ControllerBase{
         author.name = "George R.R. Martin";
         author.profission = "Writer";
         author.id = 0;
-        author.authorDescription = "George R.R. Martin is the author of the famous novel series Game of Thrones.";
-        author.street = "Street";
-        author.city = "Londom";
-        author.state = "United Kingdom";
+        author.description = "George R.R. Martin is the author of the famous novel series Game of Thrones.";
 
         return Ok(author);
     }
@@ -31,7 +35,7 @@ public class AuthorController : ControllerBase{
     [HttpPost]
     public async Task<ActionResult<Author>> create([FromBody] Author author){
         return Ok(author);
-    } 
+    }
 
     [HttpPut]
     public async Task<ActionResult<Author>> update([FromRoute] int id, [FromBody] Author author){

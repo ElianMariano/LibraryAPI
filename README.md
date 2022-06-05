@@ -20,4 +20,8 @@ Este projeto consiste na criação de uma API para um sistema gerenciador de bib
 
 ## Banco de Dados
 
-O projeto possui um banco de dados _SQL Server_.
+O projeto possui um banco de dados _SQL Server_. Os seguintes comandos criam a _migrations_ e atualizam as tabelas no banco de dados:
+```
+dotnet ef migrations add CreateInitial
+dotnet ef database update
+``` 
